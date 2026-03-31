@@ -11,7 +11,7 @@ This project is built using Python and Gradio and deployed on Hugging Face Space
 https://sam28ksha-resume-ats-analyser-openenv.hf.space
 
 🔗 GitHub Repository:  
-https://github.com/Sam28ksha/Resume_ats_analyser_openenv
+https://github.com/Samiksha28-k/Resume_ats_analyser_openenv.git
 
 ---
 
@@ -53,3 +53,26 @@ This tool simulates how an ATS (Applicant Tracking System) evaluates resumes.
 ---
 
 ## 📂 Project Structure
+Resume_ats_analyser_openenv
+│
+├── app.py
+├── requirements.txt
+├── README.md
+├── skill_matcher.py
+├── scorer.py
+├── ats_checker.py
+├── suggestion_engine.py
+├── resume_env.py
+├── baseline.py
+├── grader.py
+
+🏆 Hackathon Project
+
+This project is developed for:
+
+Meta PyTorch OpenEnv Hackathon x Scaler School of Technology
+
+👩‍💻 Author
+Samiksha Sengar
+
+Hugging Face: https://huggingface.co/Sam28ksha
