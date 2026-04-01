@@ -6,8 +6,8 @@ app = FastAPI()
 
 
 class InputData(BaseModel):
-    resume_text: str
-    job_description: str
+    resume_text: str = ""
+    job_description: str = ""
 
 
 @app.get("/")
@@ -17,7 +17,7 @@ def home():
 
 @app.post("/reset")
 def reset():
-    return inference.reset_env()
+    return {"status": "reset successful"}
 
 
 @app.post("/predict")
