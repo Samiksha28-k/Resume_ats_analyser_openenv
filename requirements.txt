@@ -8,3 +8,5 @@ numpy
 jinja2
 python-multipart
 gradio
+pdfplumber
+python-docx
