@@ -55,7 +55,8 @@ This tool simulates how an ATS (Applicant Tracking System) evaluates resumes.
 ## 📂 Project Structure
 Resume_ats_analyser_openenv
 │
-├── app.py
+├── inference.py
+├── Dockerfile
 ├── requirements.txt
 ├── README.md
 ├── skill_matcher.py
