@@ -20,6 +20,9 @@ def calculate_ats_score(resume_text, job_description):
     resume = clean_text(resume_text)
     jd = clean_text(job_description)
 
+    if resume.strip() == "" or jd.strip() == "":
+        return 0
+
     text = [resume, jd]
 
     cv = CountVectorizer()
@@ -53,22 +56,24 @@ def reset_env():
 # -------- Predict --------
 def predict(data):
 
-    resume_text = data.get("resume_text", "")
-    job_description = data.get("job_description", "")
+    try:
 
-    if resume_text == "" or job_description == "":
+        resume_text = data.get("resume_text", "")
+        job_description = data.get("job_description", "")
+
+        score = calculate_ats_score(resume_text, job_description)
+
+        missing = missing_keywords(resume_text, job_description)
+
+        return {
+            "ATS_score": score,
+            "missing_keywords": missing,
+            "message": "prediction successful"
+        }
+
+    except Exception as e:
         return {
             "ATS_score": 0,
             "missing_keywords": [],
-            "message": "provide resume_text and job_description"
+            "message": str(e)
         }
-
-    score = calculate_ats_score(resume_text, job_description)
-
-    missing = missing_keywords(resume_text, job_description)
-
-    return {
-        "ATS_score": score,
-        "missing_keywords": missing,
-        "message": "prediction successful"
-    }
