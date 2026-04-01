@@ -1,79 +1,65 @@
-# 📄 Resume ATS Analyzer OpenEnv
+# Resume ATS Analyzer - OpenEnv API
 
-An AI-powered Resume ATS Analyzer that evaluates resumes against job descriptions and provides ATS score, skill matching, and improvement suggestions.  
-This project is built using Python and Gradio and deployed on Hugging Face Spaces.
+This project is built for Meta PyTorch OpenEnv Hackathon.
 
----
+It provides an API that analyzes resume text and job description and returns ATS score and missing keywords.
 
-## 🚀 Live Demo
+## Features
 
-🔗 Hugging Face Space:  
-https://sam28ksha-resume-ats-analyser-openenv.hf.space
+- ATS Score Calculation
+- Missing Keywords Detection
+- FastAPI based API
+- Docker container support
+- OpenEnv compatible
 
-🔗 GitHub Repository:  
-https://github.com/Samiksha28-k/Resume_ats_analyser_openenv.git
+## API Endpoints
 
----
+### Home
 
-## 🧠 Project Overview
+GET /
 
-Resume ATS Analyzer helps job seekers analyze their resumes based on job descriptions and provides:
+Response:
 
-- Resume Score
-- ATS Score
-- Matched Skills
-- Missing Skills
-- Improvement Suggestions
+{
+  "message": "OpenEnv API Running"
+}
 
-This tool simulates how an ATS (Applicant Tracking System) evaluates resumes.
+### Reset
 
----
+POST /reset
 
-## ✨ Features
+Response:
 
-- 📄 Upload Resume (PDF)
-- 🧠 Job Description Analysis
-- 🎯 ATS Score Calculation
-- 🔍 Skill Matching
-- ⚠️ Missing Skills Detection
-- 💡 Resume Improvement Suggestions
-- 🌐 Deployed on Hugging Face Spaces
+{
+  "status": "environment reset successful"
+}
 
----
+### Predict
 
-## 🛠️ Tech Stack
+POST /predict
+
+Input:
+
+{
+  "resume_text": "python machine learning data analysis",
+  "job_description": "python deep learning data analysis"
+}
+
+Output:
+
+{
+  "ATS_score": 75.5,
+  "missing_keywords": ["deep", "learning"],
+  "message": "prediction successful"
+}
+
+## Tech Stack
 
 - Python
-- Gradio
-- PDFPlumber
+- FastAPI
 - Scikit-learn
-- NLP
-- Hugging Face Spaces
+- Docker
 
----
+## Author
 
-## 📂 Project Structure
-Resume_ats_analyser_openenv
-│
-├── inference.py
-├── Dockerfile
-├── requirements.txt
-├── README.md
-├── skill_matcher.py
-├── scorer.py
-├── ats_checker.py
-├── suggestion_engine.py
-├── resume_env.py
-├── baseline.py
-├── grader.py
-
-🏆 Hackathon Project
-
-This project is developed for:
-
-Meta PyTorch OpenEnv Hackathon x Scaler School of Technology
-
-👩‍💻 Author
 Samiksha Sengar
-
-Hugging Face: https://huggingface.co/Sam28ksha
