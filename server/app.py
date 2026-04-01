@@ -17,7 +17,7 @@ def home():
 
 @app.post("/reset")
 def reset():
-    return {"status": "reset successful"}
+    return inference.reset_env()
 
 
 @app.post("/predict")
