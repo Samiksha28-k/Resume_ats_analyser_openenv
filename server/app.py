@@ -4,21 +4,17 @@ import inference
 
 app = FastAPI()
 
-
 class InputData(BaseModel):
     resume_text: str = ""
     job_description: str = ""
-
 
 @app.get("/")
 def home():
     return {"message": "OpenEnv API Running"}
 
-
 @app.post("/reset")
 def reset():
     return inference.reset_env()
-
 
 @app.post("/predict")
 def predict(data: InputData):
