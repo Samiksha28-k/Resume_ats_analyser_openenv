@@ -1,30 +1,22 @@
-import pdfplumber
-import docx
+# inference.py
+
 import re
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-def extract_text_from_pdf(file):
-    text = ""
-    with pdfplumber.open(file) as pdf:
-        for page in pdf.pages:
-            text += page.extract_text() or ""
-    return text
 
-
-def extract_text_from_docx(file):
-    doc = docx.Document(file)
-    text = "\n".join([para.text for para in doc.paragraphs])
-    return text
-
-
+# -------- Clean Text --------
 def clean_text(text):
+    if text is None:
+        return ""
     text = text.lower()
-    text = re.sub(r'[^a-zA-Z0-9 ]', '', text)
+    text = re.sub(r'[^a-zA-Z0-9 ]', ' ', text)
     return text
 
 
+# -------- ATS Score --------
 def calculate_ats_score(resume_text, job_description):
+
     resume = clean_text(resume_text)
     jd = clean_text(job_description)
 
@@ -40,18 +32,43 @@ def calculate_ats_score(resume_text, job_description):
     return ats_score
 
 
+# -------- Missing Keywords --------
+def missing_keywords(resume_text, job_description):
+
+    resume_words = set(clean_text(resume_text).split())
+    jd_words = set(clean_text(job_description).split())
+
+    missing = jd_words - resume_words
+
+    return list(missing)[:20]
+
+
+# -------- Reset --------
 def reset_env():
-    return {"status": "reset successful"}
+    return {
+        "status": "environment reset successful"
+    }
 
 
+# -------- Predict --------
 def predict(data):
-    
+
     resume_text = data.get("resume_text", "")
     job_description = data.get("job_description", "")
 
+    if resume_text == "" or job_description == "":
+        return {
+            "ATS_score": 0,
+            "missing_keywords": [],
+            "message": "provide resume_text and job_description"
+        }
+
     score = calculate_ats_score(resume_text, job_description)
+
+    missing = missing_keywords(resume_text, job_description)
 
     return {
         "ATS_score": score,
+        "missing_keywords": missing,
         "message": "prediction successful"
     }
