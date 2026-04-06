@@ -9,12 +9,21 @@ def home():
 
 @app.post("/reset")
 def reset():
-    return {"status": "environment reset successful"}
+    return {
+        "status": "success",
+        "message": "environment reset successful"
+    }
 
 @app.get("/state")
 def state():
-    return {"status": "running"}
+    return {
+        "status": "running"
+    }
 
 @app.post("/predict")
 def predict_api(input_data: dict):
-    return predict(input_data)
+    result = predict(input_data)
+    return {
+        "status": "success",
+        "result": result
+    }
