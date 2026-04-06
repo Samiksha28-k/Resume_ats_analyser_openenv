@@ -1,0 +1,13 @@
+id: resume-ats-analyser
+name: Resume ATS Analyser
+description: ATS Resume Analyzer using FastAPI and OpenEnv
+version: 1.0.0
+
+entrypoint: server.app:app
+
+endpoints:
+  reset: /reset
+  state: /state
+  predict: /predict
+
+port: 8000
