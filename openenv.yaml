@@ -10,4 +10,4 @@ endpoints:
   state: /state
   predict: /predict
 
-port: 8000
+port: 7860
