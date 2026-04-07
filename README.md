@@ -1,11 +1,22 @@
-# Resume ATS Analyser OpenEnv
+---
+title: Resume ATS Analyzer OpenEnv
+emoji: 🚀
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+---
+
+# Resume ATS Analyzer OpenEnv
+
+This is an OpenEnv submission project.
 
 ## API Endpoints
 
-POST /reset  
-POST /predict  
-GET /state  
+- /reset
+- /state
+- /predict
 
-## Run
+## Description
 
-uvicorn server.app:app --host 0.0.0.0 --port 8000
+FastAPI based Resume ATS Analyzer running on Hugging Face Space using Docker.
