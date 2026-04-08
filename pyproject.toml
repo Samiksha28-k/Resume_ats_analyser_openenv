@@ -16,7 +16,14 @@ dependencies = [
 ]
 
 [project.scripts]
+<<<<<<< HEAD
 server = "server.app:main"
 
 [tool.uv]
 dev-dependencies = []
+=======
+server = "server.app:app"
+
+[tool.uv]
+dev-dependencies = []
+>>>>>>> 67344d8 (added pyproject and uv lock)
