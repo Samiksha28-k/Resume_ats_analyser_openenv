@@ -1,0 +1,17 @@
+name = "resume-ats-analyser"
+version = "0.1.0"
+description = "Resume ATS Analyser using FastAPI"
+requires-python = ">=3.10"
+
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "transformers",
+    "torch",
+    "python-multipart",
+    "huggingface_hub"
+]
+
+[tool.uv]
+dev-dependencies = []
