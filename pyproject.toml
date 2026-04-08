@@ -1,3 +1,4 @@
+[project]
 name = "resume-ats-analyser"
 version = "0.1.0"
 description = "Resume ATS Analyser using FastAPI"
@@ -10,8 +11,12 @@ dependencies = [
     "transformers",
     "torch",
     "python-multipart",
-    "huggingface_hub"
+    "huggingface_hub",
+    "openenv-core>=0.2.0"
 ]
+
+[project.scripts]
+server = "server.app:main"
 
 [tool.uv]
 dev-dependencies = []
