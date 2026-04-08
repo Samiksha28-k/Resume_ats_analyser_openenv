@@ -1,7 +1,7 @@
 fastapi
-uvicorn[standard]
+uvicorn
 pydantic
-scikit-learn
-numpy
-python-dotenv
-openai
+transformers
+torch
+python-multipart
+huggingface_hub
