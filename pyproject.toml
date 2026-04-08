@@ -1,7 +1,7 @@
 [project]
 name = "resume-ats-analyser"
 version = "0.1.0"
-description = "Resume ATS analyser"
+description = "Resume ATS analyser API"
 requires-python = ">=3.10,<3.12"
 
 dependencies = [
@@ -11,8 +11,12 @@ dependencies = [
     "torch==2.2.2",
     "python-multipart",
     "pydantic",
-    "huggingface-hub"
+    "huggingface-hub",
+    "openenv-core>=0.2.0"
 ]
+
+[project.scripts]
+server = "app:app"
 
 [tool.uv]
 dev-dependencies = []
