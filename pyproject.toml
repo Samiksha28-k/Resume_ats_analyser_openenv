@@ -9,21 +9,14 @@ dependencies = [
     "uvicorn",
     "pydantic",
     "transformers",
-    "torch",
     "python-multipart",
     "huggingface_hub",
-    "openenv-core>=0.2.0"
+    "openenv-core>=0.2.0",
+    "torch==2.2.2+cpu"
 ]
 
 [project.scripts]
-<<<<<<< HEAD
 server = "server.app:main"
 
 [tool.uv]
 dev-dependencies = []
-=======
-server = "server.app:app"
-
-[tool.uv]
-dev-dependencies = []
->>>>>>> 67344d8 (added pyproject and uv lock)
