@@ -1,4 +1,6 @@
 import os
+from fastapi import FastAPI
+from pydantic import BaseModel
 from openai import OpenAI
 
 # Environment Variables
@@ -11,7 +13,26 @@ client = OpenAI(
     api_key=HF_TOKEN
 )
 
-def predict(input_data):
+app = FastAPI()
+
+# Input schema
+class ResumeInput(BaseModel):
+    resume_text: str
+    job_description: str
+
+
+@app.get("/")
+def home():
+    return {"message": "ATS Analyzer Running"}
+
+
+@app.post("/reset")
+def reset():
+    return {"status": "ok"}
+
+
+@app.post("/predict")
+def predict(input_data: ResumeInput):
 
     task_name = "ats_score"
     benchmark = "resume_ats"
@@ -19,8 +40,8 @@ def predict(input_data):
 
     print(f"[START] task={task_name} env={benchmark} model={MODEL_NAME}", flush=True)
 
-    resume = input_data.get("resume_text", "")
-    job = input_data.get("job_description", "")
+    resume = input_data.resume_text
+    job = input_data.job_description
 
     resume_words = set(resume.lower().split())
     job_words = set(job.lower().split())
@@ -50,5 +71,6 @@ def predict(input_data):
 
     return {
         "score": score,
-        "missing_keywords": list(job_words - resume_words)
+        "missing_keywords": list(job_words - resume_words),
+        "success": success
     }
