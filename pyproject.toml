@@ -1,22 +1,23 @@
 [project]
 name = "resume-ats-analyser"
 version = "0.1.0"
-description = "Resume ATS Analyser using FastAPI"
+description = "Resume ATS analyser API"
 requires-python = ">=3.10"
 
 dependencies = [
     "fastapi",
     "uvicorn",
-    "pydantic",
     "transformers",
+    "torch==2.2.2",
     "python-multipart",
-    "huggingface_hub",
-    "openenv-core>=0.2.0",
-    "torch==2.2.2+cpu"
+    "pydantic",
+    "huggingface-hub",
+    "openenv"
 ]
 
 [project.scripts]
-server = "server.app:main"
+server = "uvicorn inference:app --host 0.0.0.0 --port 7860"
 
-[tool.uv]
-dev-dependencies = []
+[build-system]
+requires = ["uv"]
+build-backend = "uv.build"
