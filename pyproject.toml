@@ -12,7 +12,7 @@ dependencies = [
     "python-multipart",
     "pydantic",
     "huggingface-hub",
-    "openenv>=0.2.0"
+    "openenv"
 ]
 
 [project.scripts]
@@ -21,6 +21,3 @@ server = "uvicorn inference:app --host 0.0.0.0 --port 7860"
 [build-system]
 requires = ["uv"]
 build-backend = "uv.build"
-
-[tool.uv]
-dev-dependencies = []
