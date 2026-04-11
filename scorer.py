@@ -1,8 +1,6 @@
 from sentence_transformers import SentenceTransformer, util
 
-# load model
 model = SentenceTransformer("all-MiniLM-L6-v2")
-
 
 def calculate_score(matched, missing, similarity):
 
