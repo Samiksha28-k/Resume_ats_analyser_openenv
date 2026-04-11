@@ -3,11 +3,11 @@ name: Resume ATS Analyser
 description: ATS Resume Analyzer using FastAPI and OpenEnv
 version: 1.0.0
 
-entrypoint: server.app:app
+entrypoint: inference:main
 
 endpoints:
   reset: /reset
-  state: /state
+  state: /
   predict: /predict
 
 port: 7860
