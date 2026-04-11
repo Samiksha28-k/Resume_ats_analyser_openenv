@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.scripts]
-server = "uvicorn inference:app --host 0.0.0.0 --port 7860"
+server = "inference:main"
 
 [build-system]
 requires = ["uv"]
