@@ -21,15 +21,11 @@ def predict(data: ResumeRequest):
     return {"score": score}
 
 
-# OpenEnv web interface
-@app.get("/web")
-def web():
-    return {
-        "message": "Resume ATS Analyser Web Interface Running",
-        "endpoint": "/predict"
-    }
-
-
 @app.post("/reset")
 def reset():
     return {"status": "reset done"}
+
+
+@app.get("/web")
+def web():
+    return {"message": "Web interface running"}
