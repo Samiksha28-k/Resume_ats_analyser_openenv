@@ -1,29 +1,35 @@
 from fastapi import FastAPI
-import uvicorn
+from pydantic import BaseModel
+from scorer import score_resume
 
 app = FastAPI()
 
+
+class ResumeRequest(BaseModel):
+    resume_text: str
+    job_description: str
+
+
 @app.get("/")
 def home():
-    return {"message": "Resume ATS Analyser Running"}
+    return {"message": "Resume ATS Analyser API is running"}
+
 
 @app.post("/predict")
-def predict():
-    return {"score": 85}
+def predict(data: ResumeRequest):
+    score = score_resume(data.resume_text, data.job_description)
+    return {"score": score}
+
+
+# OpenEnv web interface
+@app.get("/web")
+def web():
+    return {
+        "message": "Resume ATS Analyser Web Interface Running",
+        "endpoint": "/predict"
+    }
+
 
 @app.post("/reset")
 def reset():
-    return {"message": "reset done"}
-
-
-def main():
-    uvicorn.run(
-        "server.app:app",
-        host="0.0.0.0",
-        port=7860,
-        reload=False
-    )
-
-
-if __name__ == "__main__":
-    main()
+    return {"status": "reset done"}
