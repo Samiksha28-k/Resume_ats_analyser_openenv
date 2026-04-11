@@ -1,5 +1,5 @@
 id: resume-ats-analyser
-name: Resume ATS Analyser
+name: Resume_aTS_analyser
 description: ATS Resume Analyzer using FastAPI and OpenEnv
 version: 1.0.0
 
